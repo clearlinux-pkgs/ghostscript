@@ -1,0 +1,30 @@
+Configure miss: ndir.h usability
+Configure miss: ndir.h presence
+Configure miss: ndir.h
+Configure miss: sys/ndir.h usability
+Configure miss: sys/ndir.h presence
+Configure miss: sys/ndir.h
+Configure miss: sys/window.h usability
+Configure miss: sys/window.h presence
+Configure miss: sys/window.h
+Configure miss: stringprep in -lidn
+Configure miss: systempapername in -lpaper
+Configure miss: int8
+Configure miss: int16
+Configure miss: int32
+Configure miss: whether we are using the Microsoft C compiler
+Configure miss: OpenGL/gl.h usability
+Configure miss: OpenGL/gl.h presence
+Configure miss: OpenGL/gl.h
+Configure miss: OpenGL/glu.h usability
+Configure miss: OpenGL/glu.h presence
+Configure miss: OpenGL/glu.h
+Configure miss: varargs GLU tesselator callback function type
+Configure miss: GLUT/glut.h usability
+Configure miss: GLUT/glut.h presence
+Configure miss: GLUT/glut.h
+Configure miss: GLUT library
+Configure miss: local Luratech JBIG2 library source
+Configure miss: local Luratech JPEG2K library source
+Configure miss: GTK+ 3.x
+Configure miss: GTK+ 2.x
