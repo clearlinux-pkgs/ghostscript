@@ -4,7 +4,7 @@
 #
 Name     : ghostscript
 Version  : 9.22
-Release  : 2
+Release  : 3
 URL      : https://github.com/ArtifexSoftware/ghostpdl-downloads/releases/download/gs922/ghostscript-9.22.tar.gz
 Source0  : https://github.com/ArtifexSoftware/ghostpdl-downloads/releases/download/gs922/ghostscript-9.22.tar.gz
 Summary  : Loads and saves PNG files
