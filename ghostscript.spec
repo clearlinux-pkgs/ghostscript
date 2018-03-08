@@ -4,20 +4,23 @@
 #
 Name     : ghostscript
 Version  : 9.22
-Release  : 3
+Release  : 5
 URL      : https://github.com/ArtifexSoftware/ghostpdl-downloads/releases/download/gs922/ghostscript-9.22.tar.gz
 Source0  : https://github.com/ArtifexSoftware/ghostpdl-downloads/releases/download/gs922/ghostscript-9.22.tar.gz
 Summary  : Loads and saves PNG files
 Group    : Development/Tools
-License  : AGPL-3.0 BSD-2-Clause BSL-1.0 FTL GPL-2.0 Libpng MIT libtiff
+License  : AGPL-3.0 BSD-2-Clause BSL-1.0 FTL GPL-2.0 IJG Libpng MIT libtiff
 Requires: ghostscript-bin
 Requires: ghostscript-lib
 Requires: ghostscript-data
 Requires: ghostscript-doc
 BuildRequires : cmake
+BuildRequires : cups-dev
 BuildRequires : dbus-dev
+BuildRequires : e2fsprogs-dev
 BuildRequires : freeglut-dev
 BuildRequires : glu-dev
+BuildRequires : krb5-dev
 BuildRequires : libjpeg-turbo-dev
 BuildRequires : mesa-dev
 BuildRequires : pkgconfig(fontconfig)
@@ -88,12 +91,12 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1512007582
-%configure --disable-static --disable-cups
-make V=1  %{?_smp_mflags} all so
+export SOURCE_DATE_EPOCH=1520545873
+%configure --disable-static
+make  %{?_smp_mflags} all so
 
 %install
-export SOURCE_DATE_EPOCH=1512007582
+export SOURCE_DATE_EPOCH=1520545873
 rm -rf %{buildroot}
 %make_install install-so
 
