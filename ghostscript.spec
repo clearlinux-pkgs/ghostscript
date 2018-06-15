@@ -28,7 +28,7 @@ BuildRequires : pkgconfig(ice)
 BuildRequires : pkgconfig(x11)
 BuildRequires : pkgconfig(xt)
 BuildRequires : pkgconfig(zlib)
-BuildRequires : python-dev
+
 BuildRequires : scons
 BuildRequires : sed
 BuildRequires : zlib-dev
