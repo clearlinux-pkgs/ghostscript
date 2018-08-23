@@ -1,0 +1,14 @@
+9.22
+cups-dev
+dbus-dev
+freeglut-dev
+glu-dev
+gnutls-dev
+libjpeg-turbo-dev
+mesa-dev
+pkgconfig(fontconfig)
+pkgconfig(ice)
+pkgconfig(x11)
+pkgconfig(xt)
+pkgconfig(zlib)
+zlib-dev

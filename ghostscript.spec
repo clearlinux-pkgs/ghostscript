@@ -4,7 +4,7 @@
 #
 Name     : ghostscript
 Version  : 9.22
-Release  : 8
+Release  : 9
 URL      : https://github.com/ArtifexSoftware/ghostpdl-downloads/releases/download/gs922/ghostscript-9.22.tar.gz
 Source0  : https://github.com/ArtifexSoftware/ghostpdl-downloads/releases/download/gs922/ghostscript-9.22.tar.gz
 Summary  : Loads and saves PNG files
@@ -12,14 +12,17 @@ Group    : Development/Tools
 License  : AGPL-3.0 BSD-2-Clause BSL-1.0 FTL GPL-2.0 IJG Libpng MIT libtiff
 Requires: ghostscript-bin
 Requires: ghostscript-lib
+Requires: ghostscript-license
 Requires: ghostscript-data
-Requires: ghostscript-doc
-BuildRequires : cmake
+Requires: ghostscript-man
+BuildRequires : buildreq-cmake
+BuildRequires : buildreq-scons
 BuildRequires : cups-dev
 BuildRequires : dbus-dev
 BuildRequires : e2fsprogs-dev
 BuildRequires : freeglut-dev
 BuildRequires : glu-dev
+BuildRequires : gnutls-dev
 BuildRequires : krb5-dev
 BuildRequires : libjpeg-turbo-dev
 BuildRequires : mesa-dev
@@ -28,8 +31,6 @@ BuildRequires : pkgconfig(ice)
 BuildRequires : pkgconfig(x11)
 BuildRequires : pkgconfig(xt)
 BuildRequires : pkgconfig(zlib)
-
-BuildRequires : scons
 BuildRequires : sed
 BuildRequires : zlib-dev
 
@@ -41,6 +42,8 @@ See INSTALL for instructions on how to install libpng.
 Summary: bin components for the ghostscript package.
 Group: Binaries
 Requires: ghostscript-data
+Requires: ghostscript-license
+Requires: ghostscript-man
 
 %description bin
 bin components for the ghostscript package.
@@ -66,21 +69,30 @@ Provides: ghostscript-devel
 dev components for the ghostscript package.
 
 
-%package doc
-Summary: doc components for the ghostscript package.
-Group: Documentation
-
-%description doc
-doc components for the ghostscript package.
-
-
 %package lib
 Summary: lib components for the ghostscript package.
 Group: Libraries
 Requires: ghostscript-data
+Requires: ghostscript-license
 
 %description lib
 lib components for the ghostscript package.
+
+
+%package license
+Summary: license components for the ghostscript package.
+Group: Default
+
+%description license
+license components for the ghostscript package.
+
+
+%package man
+Summary: man components for the ghostscript package.
+Group: Default
+
+%description man
+man components for the ghostscript package.
 
 
 %prep
@@ -91,13 +103,30 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1520545873
+export SOURCE_DATE_EPOCH=1535061912
 %configure --disable-static
 make  %{?_smp_mflags} all so
 
 %install
-export SOURCE_DATE_EPOCH=1520545873
+export SOURCE_DATE_EPOCH=1535061912
 rm -rf %{buildroot}
+mkdir -p %{buildroot}/usr/share/doc/ghostscript
+cp LICENSE %{buildroot}/usr/share/doc/ghostscript/LICENSE
+cp contrib/chp2200/COPYING %{buildroot}/usr/share/doc/ghostscript/contrib_chp2200_COPYING
+cp contrib/lxm3200-tweaked/LICENSE %{buildroot}/usr/share/doc/ghostscript/contrib_lxm3200-tweaked_LICENSE
+cp doc/COPYING %{buildroot}/usr/share/doc/ghostscript/doc_COPYING
+cp freetype/docs/GPLv2.TXT %{buildroot}/usr/share/doc/ghostscript/freetype_docs_GPLv2.TXT
+cp freetype/docs/LICENSE.TXT %{buildroot}/usr/share/doc/ghostscript/freetype_docs_LICENSE.TXT
+cp jbig2dec/COPYING %{buildroot}/usr/share/doc/ghostscript/jbig2dec_COPYING
+cp jbig2dec/LICENSE %{buildroot}/usr/share/doc/ghostscript/jbig2dec_LICENSE
+cp lcms2/COPYING %{buildroot}/usr/share/doc/ghostscript/lcms2_COPYING
+cp lcms2/utils/jpgicc/LICENSE_iccjpeg %{buildroot}/usr/share/doc/ghostscript/lcms2_utils_jpgicc_LICENSE_iccjpeg
+cp libpng/LICENSE %{buildroot}/usr/share/doc/ghostscript/libpng_LICENSE
+cp libpng/contrib/gregbook/COPYING %{buildroot}/usr/share/doc/ghostscript/libpng_contrib_gregbook_COPYING
+cp libpng/contrib/gregbook/LICENSE %{buildroot}/usr/share/doc/ghostscript/libpng_contrib_gregbook_LICENSE
+cp openjpeg/LICENSE %{buildroot}/usr/share/doc/ghostscript/openjpeg_LICENSE
+cp tiff/COPYRIGHT %{buildroot}/usr/share/doc/ghostscript/tiff_COPYRIGHT
+cp zlib/contrib/dotzlib/LICENSE_1_0.txt %{buildroot}/usr/share/doc/ghostscript/zlib_contrib_dotzlib_LICENSE_1_0.txt
 %make_install install-so
 
 %files
@@ -372,6 +401,41 @@ rm -rf %{buildroot}
 /usr/share/ghostscript/9.22/lib/viewps2a.ps
 /usr/share/ghostscript/9.22/lib/winmaps.ps
 /usr/share/ghostscript/9.22/lib/zeroline.ps
+
+%files dev
+%defattr(-,root,root,-)
+/usr/include/ghostscript/gdevdsp.h
+/usr/include/ghostscript/gserrors.h
+/usr/include/ghostscript/iapi.h
+/usr/include/ghostscript/ierrors.h
+/usr/lib64/libgs.so
+
+%files lib
+%defattr(-,root,root,-)
+/usr/lib64/libgs.so.9
+/usr/lib64/libgs.so.9.22
+
+%files license
+%defattr(-,root,root,-)
+/usr/share/doc/ghostscript/LICENSE
+/usr/share/doc/ghostscript/contrib_chp2200_COPYING
+/usr/share/doc/ghostscript/contrib_lxm3200-tweaked_LICENSE
+/usr/share/doc/ghostscript/doc_COPYING
+/usr/share/doc/ghostscript/freetype_docs_GPLv2.TXT
+/usr/share/doc/ghostscript/freetype_docs_LICENSE.TXT
+/usr/share/doc/ghostscript/jbig2dec_COPYING
+/usr/share/doc/ghostscript/jbig2dec_LICENSE
+/usr/share/doc/ghostscript/lcms2_COPYING
+/usr/share/doc/ghostscript/lcms2_utils_jpgicc_LICENSE_iccjpeg
+/usr/share/doc/ghostscript/libpng_LICENSE
+/usr/share/doc/ghostscript/libpng_contrib_gregbook_COPYING
+/usr/share/doc/ghostscript/libpng_contrib_gregbook_LICENSE
+/usr/share/doc/ghostscript/openjpeg_LICENSE
+/usr/share/doc/ghostscript/tiff_COPYRIGHT
+/usr/share/doc/ghostscript/zlib_contrib_dotzlib_LICENSE_1_0.txt
+
+%files man
+%defattr(-,root,root,-)
 /usr/share/man/de/man1/dvipdf.1
 /usr/share/man/de/man1/eps2eps.1
 /usr/share/man/de/man1/gsnd.1
@@ -384,20 +448,25 @@ rm -rf %{buildroot}
 /usr/share/man/de/man1/ps2pdf13.1
 /usr/share/man/de/man1/ps2pdf14.1
 /usr/share/man/de/man1/ps2ps.1
-
-%files dev
-%defattr(-,root,root,-)
-/usr/include/ghostscript/gdevdsp.h
-/usr/include/ghostscript/gserrors.h
-/usr/include/ghostscript/iapi.h
-/usr/include/ghostscript/ierrors.h
-/usr/lib64/libgs.so
-
-%files doc
-%defattr(-,root,root,-)
-%doc /usr/share/man/man1/*
-
-%files lib
-%defattr(-,root,root,-)
-/usr/lib64/libgs.so.9
-/usr/lib64/libgs.so.9.22
+/usr/share/man/man1/dvipdf.1
+/usr/share/man/man1/eps2eps.1
+/usr/share/man/man1/gs.1
+/usr/share/man/man1/gsbj.1
+/usr/share/man/man1/gsdj.1
+/usr/share/man/man1/gsdj500.1
+/usr/share/man/man1/gslj.1
+/usr/share/man/man1/gslp.1
+/usr/share/man/man1/gsnd.1
+/usr/share/man/man1/pdf2dsc.1
+/usr/share/man/man1/pdf2ps.1
+/usr/share/man/man1/pf2afm.1
+/usr/share/man/man1/pfbtopfa.1
+/usr/share/man/man1/printafm.1
+/usr/share/man/man1/ps2ascii.1
+/usr/share/man/man1/ps2epsi.1
+/usr/share/man/man1/ps2pdf.1
+/usr/share/man/man1/ps2pdf12.1
+/usr/share/man/man1/ps2pdf13.1
+/usr/share/man/man1/ps2pdf14.1
+/usr/share/man/man1/ps2pdfwr.1
+/usr/share/man/man1/ps2ps.1
