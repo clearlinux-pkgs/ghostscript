@@ -1,1 +1,6 @@
 # This file contains recursive sources that require this package
+cups
+gutenprint
+octave
+sane-backends
+texlive

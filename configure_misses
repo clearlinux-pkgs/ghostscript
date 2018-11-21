@@ -29,3 +29,4 @@ Configure miss: local Luratech JBIG2 library source
 Configure miss: local Luratech JPEG2K library source
 Configure miss: GTK+ 3.x
 Configure miss: GTK+ 2.x
+Configure miss: fpclassify
