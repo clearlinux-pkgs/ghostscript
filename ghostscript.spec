@@ -4,7 +4,7 @@
 #
 Name     : ghostscript
 Version  : 9.26
-Release  : 10
+Release  : 11
 URL      : https://github.com/ArtifexSoftware/ghostpdl-downloads/releases/download/gs926/ghostscript-9.26.tar.gz
 Source0  : https://github.com/ArtifexSoftware/ghostpdl-downloads/releases/download/gs926/ghostscript-9.26.tar.gz
 Summary  : Loads and saves PNG files
@@ -33,6 +33,7 @@ BuildRequires : pkgconfig(xt)
 BuildRequires : pkgconfig(zlib)
 BuildRequires : sed
 BuildRequires : zlib-dev
+Patch1: CVE-2019-6116.patch
 
 %description
 See the note about version numbers near the top of png.h
@@ -106,13 +107,14 @@ man components for the ghostscript package.
 
 %prep
 %setup -q -n ghostscript-9.26
+%patch1 -p1
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1542821740
+export SOURCE_DATE_EPOCH=1548269586
 export CFLAGS="$CFLAGS -fstack-protector-strong -mzero-caller-saved-regs=used "
 export FCFLAGS="$CFLAGS -fstack-protector-strong -mzero-caller-saved-regs=used "
 export FFLAGS="$CFLAGS -fstack-protector-strong -mzero-caller-saved-regs=used "
@@ -121,7 +123,7 @@ export CXXFLAGS="$CXXFLAGS -fstack-protector-strong -mzero-caller-saved-regs=use
 make  %{?_smp_mflags} all so
 
 %install
-export SOURCE_DATE_EPOCH=1542821740
+export SOURCE_DATE_EPOCH=1548269586
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/ghostscript
 cp LICENSE %{buildroot}/usr/share/package-licenses/ghostscript/LICENSE
