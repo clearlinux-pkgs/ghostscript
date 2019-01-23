@@ -5605,6 +5605,7 @@ libgs.so.9:read_matrix
 libgs.so.9:real_param
 libgs.so.9:ref_function
 libgs.so.9:ref_stack_allow_expansion
+libgs.so.9:ref_stack_array_sanitize
 libgs.so.9:ref_stack_cleanup
 libgs.so.9:ref_stack_count
 libgs.so.9:ref_stack_counttomark
