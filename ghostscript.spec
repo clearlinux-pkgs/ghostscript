@@ -4,10 +4,10 @@
 #
 Name     : ghostscript
 Version  : 9.26
-Release  : 12
+Release  : 13
 URL      : https://github.com/ArtifexSoftware/ghostpdl-downloads/releases/download/gs926/ghostscript-9.26.tar.gz
 Source0  : https://github.com/ArtifexSoftware/ghostpdl-downloads/releases/download/gs926/ghostscript-9.26.tar.gz
-Summary  : Loads and saves PNG files
+Summary  : An interpreter for the PostScript language
 Group    : Development/Tools
 License  : AGPL-3.0 BSD-2-Clause BSL-1.0 FTL GPL-2.0 IJG Libpng MIT libtiff
 Requires: ghostscript-bin = %{version}-%{release}
@@ -32,12 +32,17 @@ BuildRequires : pkgconfig(x11)
 BuildRequires : pkgconfig(xt)
 BuildRequires : pkgconfig(zlib)
 BuildRequires : sed
+BuildRequires : tiff-dev
 BuildRequires : zlib-dev
 Patch1: CVE-2019-6116.patch
 
 %description
-See the note about version numbers near the top of png.h
-See INSTALL for instructions on how to install libpng.
+ZLIB DATA COMPRESSION LIBRARY
+zlib 1.2.11 is a general purpose data compression library.  All the code is
+thread safe.  The data format used by the zlib library is described by RFCs
+(Request for Comments) 1950 to 1952 in the files
+http://tools.ietf.org/html/rfc1950 (zlib format), rfc1951 (deflate format) and
+rfc1952 (gzip format).
 
 %package bin
 Summary: bin components for the ghostscript package.
@@ -114,16 +119,16 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1548276864
+export SOURCE_DATE_EPOCH=1549254876
 export CFLAGS="$CFLAGS -fstack-protector-strong -mzero-caller-saved-regs=used "
 export FCFLAGS="$CFLAGS -fstack-protector-strong -mzero-caller-saved-regs=used "
 export FFLAGS="$CFLAGS -fstack-protector-strong -mzero-caller-saved-regs=used "
 export CXXFLAGS="$CXXFLAGS -fstack-protector-strong -mzero-caller-saved-regs=used "
-%configure --disable-static
+%configure --disable-static --with-system-libtiff
 make  %{?_smp_mflags} all so
 
 %install
-export SOURCE_DATE_EPOCH=1548276864
+export SOURCE_DATE_EPOCH=1549254876
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/ghostscript
 cp LICENSE %{buildroot}/usr/share/package-licenses/ghostscript/LICENSE

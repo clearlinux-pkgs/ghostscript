@@ -9,20 +9,6 @@ Configure miss: sys/window.h presence
 Configure miss: sys/window.h
 Configure miss: stringprep in -lidn
 Configure miss: systempapername in -lpaper
-Configure miss: int8
-Configure miss: int16
-Configure miss: int32
-Configure miss: whether we are using the Microsoft C compiler
-Configure miss: OpenGL/gl.h usability
-Configure miss: OpenGL/gl.h presence
-Configure miss: OpenGL/gl.h
-Configure miss: OpenGL/glu.h usability
-Configure miss: OpenGL/glu.h presence
-Configure miss: OpenGL/glu.h
-Configure miss: varargs GLU tesselator callback function type
-Configure miss: GLUT/glut.h usability
-Configure miss: GLUT/glut.h presence
-Configure miss: GLUT/glut.h
 Configure miss: x86_64-generic-linux-gnu-cups-config
 Configure miss: local Luratech JBIG2 library source
 Configure miss: local Luratech JPEG2K library source
