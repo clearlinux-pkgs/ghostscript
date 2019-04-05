@@ -1,6 +1,7 @@
-9.26
+9.27
 cups-dev
 dbus-dev
+fontconfig-dev
 freeglut-dev
 glu-dev
 gnutls-dev

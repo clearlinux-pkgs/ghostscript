@@ -104,6 +104,7 @@ libgs.so.9:FT_Get_Glyph_Name
 libgs.so.9:FT_Get_Kerning
 libgs.so.9:FT_Get_MM_Blend_Coordinates
 libgs.so.9:FT_Get_MM_Var
+libgs.so.9:FT_Get_MM_WeightVector
 libgs.so.9:FT_Get_Module
 libgs.so.9:FT_Get_Module_Interface
 libgs.so.9:FT_Get_Multi_Master
@@ -223,6 +224,7 @@ libgs.so.9:FT_Set_Debug_Hook
 libgs.so.9:FT_Set_Default_Properties
 libgs.so.9:FT_Set_MM_Blend_Coordinates
 libgs.so.9:FT_Set_MM_Design_Coordinates
+libgs.so.9:FT_Set_MM_WeightVector
 libgs.so.9:FT_Set_Named_Instance
 libgs.so.9:FT_Set_Pixel_Sizes
 libgs.so.9:FT_Set_Renderer
@@ -310,6 +312,7 @@ libgs.so.9:Load_TrueType_Programs
 libgs.so.9:MD5_Final
 libgs.so.9:MD5_Init
 libgs.so.9:MD5_Update
+libgs.so.9:Memento_adjustRef
 libgs.so.9:Memento_breakAt
 libgs.so.9:Memento_breakOnFree
 libgs.so.9:Memento_breakOnRealloc
@@ -364,6 +367,7 @@ libgs.so.9:T1_Get_Advances
 libgs.so.9:T1_Get_Kerning
 libgs.so.9:T1_Get_MM_Blend
 libgs.so.9:T1_Get_MM_Var
+libgs.so.9:T1_Get_MM_WeightVector
 libgs.so.9:T1_Get_Multi_Master
 libgs.so.9:T1_Get_Private_Dict
 libgs.so.9:T1_Get_Track_Kerning
@@ -377,6 +381,7 @@ libgs.so.9:T1_Read_Metrics
 libgs.so.9:T1_Reset_MM_Blend
 libgs.so.9:T1_Set_MM_Blend
 libgs.so.9:T1_Set_MM_Design
+libgs.so.9:T1_Set_MM_WeightVector
 libgs.so.9:T1_Set_Var_Design
 libgs.so.9:T1_Size_Done
 libgs.so.9:T1_Size_Init
@@ -1329,7 +1334,6 @@ libgs.so.9:color_cmyk_to_rgb
 libgs.so.9:color_rgb_to_cmyk
 libgs.so.9:color_rgb_to_gray
 libgs.so.9:common_identity
-libgs.so.9:composite_values
 libgs.so.9:compress
 libgs.so.9:compress2
 libgs.so.9:compressBound
@@ -1707,7 +1711,6 @@ libgs.so.9:filter_report_error
 libgs.so.9:filter_write
 libgs.so.9:filter_write_predictor
 libgs.so.9:filter_write_simple
-libgs.so.9:finish_stringwidth
 libgs.so.9:fixed_coeff_mult
 libgs.so.9:fixed_mult_quo
 libgs.so.9:float_param
@@ -2137,7 +2140,6 @@ libgs.so.9:gs_copygstate
 libgs.so.9:gs_copypage
 libgs.so.9:gs_copyscanlines
 libgs.so.9:gs_cos_degrees
-libgs.so.9:gs_create_composite_alpha
 libgs.so.9:gs_create_overprint
 libgs.so.9:gs_cshow_begin
 libgs.so.9:gs_cspace_alloc
@@ -2164,6 +2166,7 @@ libgs.so.9:gs_cspace_new_DevicePixel
 libgs.so.9:gs_cspace_new_DeviceRGB
 libgs.so.9:gs_cspace_new_ICC
 libgs.so.9:gs_cspace_new_Separation
+libgs.so.9:gs_cspace_new_scrgb
 libgs.so.9:gs_cspace_set_devn_function
 libgs.so.9:gs_cspace_set_sepr_function
 libgs.so.9:gs_currentPDFfontsize
@@ -2276,7 +2279,6 @@ libgs.so.9:gs_enumerate_files_init
 libgs.so.9:gs_enumerate_files_next
 libgs.so.9:gs_eoclip
 libgs.so.9:gs_eofill
-libgs.so.9:gs_eoviewclip
 libgs.so.9:gs_erasepage
 libgs.so.9:gs_errorinfo_put_pair
 libgs.so.9:gs_errorinfo_put_pair_from_dict
@@ -2344,6 +2346,7 @@ libgs.so.9:gs_function_Sd_free_params
 libgs.so.9:gs_function_Sd_init
 libgs.so.9:gs_function_get_info_default
 libgs.so.9:gs_gc_reclaim
+libgs.so.9:gs_get_callout_stdin
 libgs.so.9:gs_get_colorname_string
 libgs.so.9:gs_get_device_or_hw_params
 libgs.so.9:gs_get_fapi_server_inits
@@ -2418,7 +2421,6 @@ libgs.so.9:gs_idtransform
 libgs.so.9:gs_ignore_consolidate_free
 libgs.so.9:gs_ignore_free_object
 libgs.so.9:gs_ignore_free_string
-libgs.so.9:gs_image2_t_init
 libgs.so.9:gs_image3_t_init
 libgs.so.9:gs_image3x_t_init
 libgs.so.9:gs_image4_t_init
@@ -2449,7 +2451,6 @@ libgs.so.9:gs_initclip
 libgs.so.9:gs_initgraphics
 libgs.so.9:gs_initialize_wordimagedevice
 libgs.so.9:gs_initmatrix
-libgs.so.9:gs_initviewclip
 libgs.so.9:gs_interp_alloc_stacks
 libgs.so.9:gs_interp_free_stacks
 libgs.so.9:gs_interp_init
@@ -2490,6 +2491,7 @@ libgs.so.9:gs_kshow_next_char
 libgs.so.9:gs_kshow_previous_char
 libgs.so.9:gs_len_glyphs_release
 libgs.so.9:gs_lib_ctx_fin
+libgs.so.9:gs_lib_ctx_get_act_on_uel
 libgs.so.9:gs_lib_ctx_get_cms_context
 libgs.so.9:gs_lib_ctx_get_default_device_list
 libgs.so.9:gs_lib_ctx_get_interp_instance
@@ -2509,15 +2511,22 @@ libgs.so.9:gs_main_add_lib_path
 libgs.so.9:gs_main_alloc_instance
 libgs.so.9:gs_main_dump_stack
 libgs.so.9:gs_main_finit
+libgs.so.9:gs_main_force_dimensions
+libgs.so.9:gs_main_force_resolutions
+libgs.so.9:gs_main_get_device_memory
+libgs.so.9:gs_main_get_uel_offset
 libgs.so.9:gs_main_init0
 libgs.so.9:gs_main_init1
 libgs.so.9:gs_main_init2
 libgs.so.9:gs_main_init2aux
 libgs.so.9:gs_main_init_with_args
+libgs.so.9:gs_main_init_with_args01
+libgs.so.9:gs_main_init_with_args2
 libgs.so.9:gs_main_inst_arg_decode
 libgs.so.9:gs_main_inst_get_arg_decode
 libgs.so.9:gs_main_lib_open
 libgs.so.9:gs_main_run_file
+libgs.so.9:gs_main_run_file2
 libgs.so.9:gs_main_run_file_open
 libgs.so.9:gs_main_run_start
 libgs.so.9:gs_main_run_string
@@ -2525,6 +2534,7 @@ libgs.so.9:gs_main_run_string_begin
 libgs.so.9:gs_main_run_string_continue
 libgs.so.9:gs_main_run_string_end
 libgs.so.9:gs_main_run_string_with_length
+libgs.so.9:gs_main_set_device
 libgs.so.9:gs_main_set_lib_paths
 libgs.so.9:gs_make_identity
 libgs.so.9:gs_make_mem_abuf_device
@@ -2545,6 +2555,7 @@ libgs.so.9:gs_makepattern
 libgs.so.9:gs_makepixmappattern
 libgs.so.9:gs_makewordimagedevice
 libgs.so.9:gs_malloc_init
+libgs.so.9:gs_malloc_init_with_context
 libgs.so.9:gs_malloc_memory_init
 libgs.so.9:gs_malloc_release
 libgs.so.9:gs_malloc_unwrap
@@ -2910,8 +2921,6 @@ libgs.so.9:gs_type42_substitute_glyph_index_vertical
 libgs.so.9:gs_upathbbox
 libgs.so.9:gs_update_trans_marking_params
 libgs.so.9:gs_upmergepath
-libgs.so.9:gs_viewclip
-libgs.so.9:gs_viewclippath
 libgs.so.9:gs_vsnprintf
 libgs.so.9:gs_vsprintf
 libgs.so.9:gs_widthshow_begin
@@ -2921,6 +2930,7 @@ libgs.so.9:gs_xyshow_begin
 libgs.so.9:gsapi_delete_instance
 libgs.so.9:gsapi_exit
 libgs.so.9:gsapi_get_default_device_list
+libgs.so.9:gsapi_get_device_memory
 libgs.so.9:gsapi_init_with_args
 libgs.so.9:gsapi_new_instance
 libgs.so.9:gsapi_revision
@@ -2932,6 +2942,7 @@ libgs.so.9:gsapi_run_string_end
 libgs.so.9:gsapi_run_string_with_length
 libgs.so.9:gsapi_set_arg_encoding
 libgs.so.9:gsapi_set_default_device_list
+libgs.so.9:gsapi_set_device
 libgs.so.9:gsapi_set_display_callback
 libgs.so.9:gsapi_set_poll
 libgs.so.9:gsapi_set_stdio
@@ -3012,6 +3023,7 @@ libgs.so.9:gsicc_mcm_set_link
 libgs.so.9:gsicc_new_device_profile_array
 libgs.so.9:gsicc_new_iccsmask
 libgs.so.9:gsicc_nocm_get_link
+libgs.so.9:gsicc_open_search
 libgs.so.9:gsicc_profile_from_ps
 libgs.so.9:gsicc_profile_new
 libgs.so.9:gsicc_profile_serialize
@@ -3052,6 +3064,7 @@ libgs.so.9:gx_bits_cache_free
 libgs.so.9:gx_bits_cache_init
 libgs.so.9:gx_bits_cache_shorten
 libgs.so.9:gx_blend_image_buffer
+libgs.so.9:gx_blend_image_buffer16
 libgs.so.9:gx_build_blended_image_row
 libgs.so.9:gx_build_cie_space
 libgs.so.9:gx_change_color_model
@@ -3351,6 +3364,7 @@ libgs.so.9:gx_downscaler_init_planar_trapped_cm
 libgs.so.9:gx_downscaler_init_trapped
 libgs.so.9:gx_downscaler_init_trapped_cm
 libgs.so.9:gx_downscaler_init_trapped_cm_ets
+libgs.so.9:gx_downscaler_init_trapped_cm_halftone
 libgs.so.9:gx_downscaler_init_trapped_ets
 libgs.so.9:gx_downscaler_process_page
 libgs.so.9:gx_downscaler_read_params
@@ -3682,6 +3696,7 @@ libgs.so.9:gx_saved_pages_list_print
 libgs.so.9:gx_saved_pages_param_process
 libgs.so.9:gx_scale_char_matrix
 libgs.so.9:gx_scan_convert
+libgs.so.9:gx_scan_convert_and_fill
 libgs.so.9:gx_scan_convert_app
 libgs.so.9:gx_scan_convert_tr
 libgs.so.9:gx_scan_convert_tr_app
@@ -3814,7 +3829,6 @@ libgs.so.9:ijs_server_install_set_cb
 libgs.so.9:ijs_server_install_status_cb
 libgs.so.9:ijs_server_iter
 libgs.so.9:ilog2
-libgs.so.9:image1_setup
 libgs.so.9:image_flip_planes
 libgs.so.9:image_init_clues
 libgs.so.9:image_init_color_cache
@@ -4089,7 +4103,6 @@ libgs.so.9:make_rss
 libgs.so.9:make_sampled_function
 libgs.so.9:make_stream_file
 libgs.so.9:make_type4_function
-libgs.so.9:make_upath
 libgs.so.9:map_devn_using_function
 libgs.so.9:mark_font_descriptor_symbolic
 libgs.so.9:matrix_equal
@@ -5210,7 +5223,6 @@ libgs.so.9:process_cid_text
 libgs.so.9:process_cmap_text
 libgs.so.9:process_composite_text
 libgs.so.9:process_float_array
-libgs.so.9:process_non_source_image
 libgs.so.9:process_plain_text
 libgs.so.9:process_text_modify_width
 libgs.so.9:ps2write_dsc_header
@@ -5245,6 +5257,26 @@ libgs.so.9:ps_table_add
 libgs.so.9:ps_table_done
 libgs.so.9:ps_table_new
 libgs.so.9:ps_table_release
+libgs.so.9:psapi_act_on_uel
+libgs.so.9:psapi_add_path
+libgs.so.9:psapi_delete_instance
+libgs.so.9:psapi_exit
+libgs.so.9:psapi_force_geometry
+libgs.so.9:psapi_get_device_memory
+libgs.so.9:psapi_get_uel_offset
+libgs.so.9:psapi_init_with_args
+libgs.so.9:psapi_init_with_args01
+libgs.so.9:psapi_init_with_args2
+libgs.so.9:psapi_new_instance
+libgs.so.9:psapi_run_file
+libgs.so.9:psapi_run_string
+libgs.so.9:psapi_run_string_begin
+libgs.so.9:psapi_run_string_continue
+libgs.so.9:psapi_run_string_end
+libgs.so.9:psapi_run_string_with_length
+libgs.so.9:psapi_set_arg_encoding
+libgs.so.9:psapi_set_device
+libgs.so.9:psapi_set_param
 libgs.so.9:psd_allow_multiple_pages
 libgs.so.9:psd_setup
 libgs.so.9:psd_write
@@ -5831,6 +5863,7 @@ libgs.so.9:zcos
 libgs.so.9:zcs_begin_map
 libgs.so.9:zcurrentdevice
 libgs.so.9:zcurrentgstate
+libgs.so.9:zcurrentoutputdevice
 libgs.so.9:zcurveto
 libgs.so.9:zcvi
 libgs.so.9:zcvr
@@ -5913,6 +5946,7 @@ libgs.so.9:zsetbbox
 libgs.so.9:zsetcachedevice
 libgs.so.9:zsetcachedevice2
 libgs.so.9:zsetdevice
+libgs.so.9:zsetdevice_no_safer
 libgs.so.9:zsetfont
 libgs.so.9:zsetgstate
 libgs.so.9:zsin
