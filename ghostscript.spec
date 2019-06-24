@@ -4,7 +4,7 @@
 #
 Name     : ghostscript
 Version  : 9.27
-Release  : 15
+Release  : 16
 URL      : https://github.com/ArtifexSoftware/ghostpdl-downloads/releases/download/gs927/ghostscript-9.27.tar.gz
 Source0  : https://github.com/ArtifexSoftware/ghostpdl-downloads/releases/download/gs927/ghostscript-9.27.tar.gz
 Summary  : Loads and saves PNG files
@@ -21,13 +21,21 @@ BuildRequires : cups-dev
 BuildRequires : dbus-dev
 BuildRequires : e2fsprogs-dev
 BuildRequires : fontconfig-dev
+BuildRequires : freeglut-dev
+BuildRequires : glu-dev
 BuildRequires : gnutls-dev
 BuildRequires : krb5-dev
+BuildRequires : libjpeg-turbo-dev
+BuildRequires : mesa-dev
 BuildRequires : pkgconfig(fontconfig)
+BuildRequires : pkgconfig(ice)
 BuildRequires : pkgconfig(x11)
 BuildRequires : pkgconfig(xt)
+BuildRequires : pkgconfig(zlib)
 BuildRequires : sed
 BuildRequires : tiff-dev
+BuildRequires : zlib-dev
+Patch1: CVE-2018-11813.patch
 
 %description
 See the note about version numbers near the top of png.h
@@ -58,6 +66,7 @@ Requires: ghostscript-lib = %{version}-%{release}
 Requires: ghostscript-bin = %{version}-%{release}
 Requires: ghostscript-data = %{version}-%{release}
 Provides: ghostscript-devel = %{version}-%{release}
+Requires: ghostscript = %{version}-%{release}
 
 %description dev
 dev components for the ghostscript package.
@@ -100,23 +109,24 @@ man components for the ghostscript package.
 
 %prep
 %setup -q -n ghostscript-9.27
+%patch1 -p1
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1554423676
-export LDFLAGS="${LDFLAGS} -fno-lto"
-export CFLAGS="$CFLAGS -fstack-protector-strong -mzero-caller-saved-regs=used "
-export FCFLAGS="$CFLAGS -fstack-protector-strong -mzero-caller-saved-regs=used "
-export FFLAGS="$CFLAGS -fstack-protector-strong -mzero-caller-saved-regs=used "
-export CXXFLAGS="$CXXFLAGS -fstack-protector-strong -mzero-caller-saved-regs=used "
+export SOURCE_DATE_EPOCH=1561413743
+export GCC_IGNORE_WERROR=1
+export CFLAGS="$CFLAGS -fno-lto -fstack-protector-strong -mzero-caller-saved-regs=used "
+export FCFLAGS="$CFLAGS -fno-lto -fstack-protector-strong -mzero-caller-saved-regs=used "
+export FFLAGS="$CFLAGS -fno-lto -fstack-protector-strong -mzero-caller-saved-regs=used "
+export CXXFLAGS="$CXXFLAGS -fno-lto -fstack-protector-strong -mzero-caller-saved-regs=used "
 %configure --disable-static --with-system-libtiff
 make  %{?_smp_mflags} all so
 
 %install
-export SOURCE_DATE_EPOCH=1554423676
+export SOURCE_DATE_EPOCH=1561413743
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/ghostscript
 cp LICENSE %{buildroot}/usr/share/package-licenses/ghostscript/LICENSE
