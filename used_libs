@@ -6,5 +6,6 @@ libcupsimage.so.2
 libdl.so.2
 libfontconfig.so.1
 libm.so.6
+libpng16.so.16
 libpthread.so.0
 libtiff.so.5
