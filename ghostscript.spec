@@ -4,7 +4,7 @@
 #
 Name     : ghostscript
 Version  : 9.27
-Release  : 17
+Release  : 18
 URL      : https://github.com/ArtifexSoftware/ghostpdl-downloads/releases/download/gs927/ghostscript-9.27.tar.gz
 Source0  : https://github.com/ArtifexSoftware/ghostpdl-downloads/releases/download/gs927/ghostscript-9.27.tar.gz
 Summary  : Loads and saves PNG files
@@ -44,6 +44,9 @@ BuildRequires : tiff-dev
 BuildRequires : zlib-dev
 Patch1: CVE-2018-11813.patch
 Patch2: build-Add-configure-option-to-use-system-libpng.patch
+Patch3: 0001-PDF-interpreter-Decode-ToUnicode-entries-of-the-form.patch
+Patch4: CVE-2019-14813.patch
+Patch5: CVE-2019-14817.patch
 
 %description
 See the note about version numbers near the top of png.h
@@ -119,13 +122,16 @@ man components for the ghostscript package.
 %setup -q -n ghostscript-9.27
 %patch1 -p1
 %patch2 -p1
+%patch3 -p1
+%patch4 -p1
+%patch5 -p1
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
-export LANG=C
-export SOURCE_DATE_EPOCH=1561488715
+export LANG=C.UTF-8
+export SOURCE_DATE_EPOCH=1568763522
 export GCC_IGNORE_WERROR=1
 export CFLAGS="$CFLAGS -fno-lto -fstack-protector-strong -mzero-caller-saved-regs=used "
 export FCFLAGS="$CFLAGS -fno-lto -fstack-protector-strong -mzero-caller-saved-regs=used "
@@ -135,7 +141,7 @@ export CXXFLAGS="$CXXFLAGS -fno-lto -fstack-protector-strong -mzero-caller-saved
 make  %{?_smp_mflags} all so
 
 %install
-export SOURCE_DATE_EPOCH=1561488715
+export SOURCE_DATE_EPOCH=1568763522
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/ghostscript
 cp LICENSE %{buildroot}/usr/share/package-licenses/ghostscript/LICENSE
