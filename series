@@ -1,5 +1,2 @@
 CVE-2018-11813.patch
 build-Add-configure-option-to-use-system-libpng.patch
-0001-PDF-interpreter-Decode-ToUnicode-entries-of-the-form.patch
-CVE-2019-14813.patch
-CVE-2019-14817.patch
