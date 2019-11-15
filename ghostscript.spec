@@ -4,7 +4,7 @@
 #
 Name     : ghostscript
 Version  : 9.50
-Release  : 19
+Release  : 20
 URL      : https://github.com/ArtifexSoftware/ghostpdl-downloads/releases/download/gs950/ghostscript-9.50.tar.gz
 Source0  : https://github.com/ArtifexSoftware/ghostpdl-downloads/releases/download/gs950/ghostscript-9.50.tar.gz
 Summary  : Loads and saves PNG files
@@ -23,19 +23,28 @@ BuildRequires : cups-dev
 BuildRequires : dbus-dev
 BuildRequires : e2fsprogs-dev
 BuildRequires : fontconfig-dev
+BuildRequires : freeglut-dev
 BuildRequires : gettext-bin
+BuildRequires : glu-dev
+BuildRequires : gnutls-dev
 BuildRequires : krb5-dev
+BuildRequires : libjpeg-turbo-dev
 BuildRequires : libtool
 BuildRequires : libtool-dev
 BuildRequires : m4
+BuildRequires : mesa-dev
 BuildRequires : pkg-config-dev
 BuildRequires : pkgconfig(fontconfig)
+BuildRequires : pkgconfig(ice)
 BuildRequires : pkgconfig(x11)
 BuildRequires : pkgconfig(xt)
+BuildRequires : pkgconfig(zlib)
 BuildRequires : sed
 BuildRequires : tiff-dev
+BuildRequires : zlib-dev
 Patch1: CVE-2018-11813.patch
 Patch2: build-Add-configure-option-to-use-system-libpng.patch
+Patch3: CVE-2019-14869.patch
 
 %description
 See the note about version numbers near the top of png.h
@@ -109,15 +118,17 @@ man components for the ghostscript package.
 
 %prep
 %setup -q -n ghostscript-9.50
+cd %{_builddir}/ghostscript-9.50
 %patch1 -p1
 %patch2 -p1
+%patch3 -p1
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1571762011
+export SOURCE_DATE_EPOCH=1573840701
 export GCC_IGNORE_WERROR=1
 export CFLAGS="$CFLAGS -fno-lto -fstack-protector-strong -mzero-caller-saved-regs=used "
 export FCFLAGS="$CFLAGS -fno-lto -fstack-protector-strong -mzero-caller-saved-regs=used "
@@ -127,7 +138,7 @@ export CXXFLAGS="$CXXFLAGS -fno-lto -fstack-protector-strong -mzero-caller-saved
 make  %{?_smp_mflags}  all so
 
 %install
-export SOURCE_DATE_EPOCH=1571762011
+export SOURCE_DATE_EPOCH=1573840701
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/ghostscript
 cp %{_builddir}/ghostscript-9.50/LICENSE %{buildroot}/usr/share/package-licenses/ghostscript/e84a42ff92058462c731335c806dd2a761134b20
