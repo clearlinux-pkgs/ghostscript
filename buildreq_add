@@ -1,5 +1,19 @@
 # This file contains additional build requirements that did not get
 # picked up automatically. One name per line, no whitespace.
-krb5-dev
+cups-dev
+dbus-dev
 e2fsprogs-dev
+fontconfig-dev
+freeglut-dev
+glu-dev
+gnutls-dev
+krb5-dev
+libjpeg-turbo-dev
+mesa-dev
+pkgconfig(fontconfig)
+pkgconfig(ice)
+pkgconfig(x11)
+pkgconfig(xt)
+pkgconfig(zlib)
 tiff-dev
+zlib-dev

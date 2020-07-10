@@ -58,6 +58,7 @@ libgs.so.9:FT_Angle_Diff
 libgs.so.9:FT_Atan2
 libgs.so.9:FT_Attach_File
 libgs.so.9:FT_Attach_Stream
+libgs.so.9:FT_Bitmap_Blend
 libgs.so.9:FT_Bitmap_Convert
 libgs.so.9:FT_Bitmap_Copy
 libgs.so.9:FT_Bitmap_Done
@@ -96,6 +97,7 @@ libgs.so.9:FT_Get_CMap_Format
 libgs.so.9:FT_Get_CMap_Language_ID
 libgs.so.9:FT_Get_Char_Index
 libgs.so.9:FT_Get_Charmap_Index
+libgs.so.9:FT_Get_Color_Glyph_Layer
 libgs.so.9:FT_Get_First_Char
 libgs.so.9:FT_Get_Font_Format
 libgs.so.9:FT_Get_Gasp
@@ -133,7 +135,6 @@ libgs.so.9:FT_Get_X11_Font_Format
 libgs.so.9:FT_GlyphLoader_Add
 libgs.so.9:FT_GlyphLoader_CheckPoints
 libgs.so.9:FT_GlyphLoader_CheckSubGlyphs
-libgs.so.9:FT_GlyphLoader_CopyPoints
 libgs.so.9:FT_GlyphLoader_CreateExtra
 libgs.so.9:FT_GlyphLoader_Done
 libgs.so.9:FT_GlyphLoader_New
@@ -155,6 +156,7 @@ libgs.so.9:FT_Hypot
 libgs.so.9:FT_Init_FreeType
 libgs.so.9:FT_Library_SetLcdFilter
 libgs.so.9:FT_Library_SetLcdFilterWeights
+libgs.so.9:FT_Library_SetLcdGeometry
 libgs.so.9:FT_Library_Version
 libgs.so.9:FT_List_Add
 libgs.so.9:FT_List_Finalize
@@ -168,6 +170,7 @@ libgs.so.9:FT_Load_Glyph
 libgs.so.9:FT_Load_Sfnt_Table
 libgs.so.9:FT_Lookup_Renderer
 libgs.so.9:FT_Match_Size
+libgs.so.9:FT_Matrix_Check
 libgs.so.9:FT_Matrix_Invert
 libgs.so.9:FT_Matrix_Multiply
 libgs.so.9:FT_Matrix_Multiply_Scaled
@@ -175,6 +178,7 @@ libgs.so.9:FT_MulDiv
 libgs.so.9:FT_MulDiv_No_Round
 libgs.so.9:FT_MulFix
 libgs.so.9:FT_New_Face
+libgs.so.9:FT_New_Glyph
 libgs.so.9:FT_New_GlyphSlot
 libgs.so.9:FT_New_Library
 libgs.so.9:FT_New_Memory
@@ -187,7 +191,6 @@ libgs.so.9:FT_Outline_Check
 libgs.so.9:FT_Outline_Copy
 libgs.so.9:FT_Outline_Decompose
 libgs.so.9:FT_Outline_Done
-libgs.so.9:FT_Outline_Done_Internal
 libgs.so.9:FT_Outline_Embolden
 libgs.so.9:FT_Outline_EmboldenXY
 libgs.so.9:FT_Outline_GetInsideBorder
@@ -197,7 +200,6 @@ libgs.so.9:FT_Outline_Get_Bitmap
 libgs.so.9:FT_Outline_Get_CBox
 libgs.so.9:FT_Outline_Get_Orientation
 libgs.so.9:FT_Outline_New
-libgs.so.9:FT_Outline_New_Internal
 libgs.so.9:FT_Outline_Render
 libgs.so.9:FT_Outline_Reverse
 libgs.so.9:FT_Outline_Transform
@@ -278,6 +280,8 @@ libgs.so.9:FT_Stroker_ParseOutline
 libgs.so.9:FT_Stroker_Rewind
 libgs.so.9:FT_Stroker_Set
 libgs.so.9:FT_Tan
+libgs.so.9:FT_Trace_Disable
+libgs.so.9:FT_Trace_Enable
 libgs.so.9:FT_Trace_Get_Count
 libgs.so.9:FT_Trace_Get_Name
 libgs.so.9:FT_TrueTypeGX_Free
@@ -337,6 +341,7 @@ libgs.so.9:Memento_realloc
 libgs.so.9:Memento_reference
 libgs.so.9:Memento_setMax
 libgs.so.9:Memento_setParanoia
+libgs.so.9:Memento_squeezing
 libgs.so.9:Memento_startLeaking
 libgs.so.9:Memento_stats
 libgs.so.9:Memento_stopLeaking
@@ -889,7 +894,6 @@ libgs.so.9:cff_random
 libgs.so.9:cff_size_done
 libgs.so.9:cff_size_init
 libgs.so.9:cff_size_request
-libgs.so.9:cff_size_select
 libgs.so.9:cff_slot_done
 libgs.so.9:cff_slot_init
 libgs.so.9:cff_slot_load
@@ -991,6 +995,7 @@ libgs.so.9:clist_fill_parallelogram
 libgs.so.9:clist_fill_path
 libgs.so.9:clist_fill_rectangle
 libgs.so.9:clist_fill_rectangle_hl_color
+libgs.so.9:clist_fill_stroke_path
 libgs.so.9:clist_fill_trapezoid
 libgs.so.9:clist_fill_triangle
 libgs.so.9:clist_fillpage
@@ -1492,6 +1497,7 @@ libgs.so.9:default_subclass_fill_parallelogram
 libgs.so.9:default_subclass_fill_path
 libgs.so.9:default_subclass_fill_rectangle
 libgs.so.9:default_subclass_fill_rectangle_hl_color
+libgs.so.9:default_subclass_fill_stroke_path
 libgs.so.9:default_subclass_fill_trapezoid
 libgs.so.9:default_subclass_fill_triangle
 libgs.so.9:default_subclass_fillpage
@@ -1849,6 +1855,7 @@ libgs.so.9:gdev_pdf_fill_mask
 libgs.so.9:gdev_pdf_fill_path
 libgs.so.9:gdev_pdf_fill_rectangle
 libgs.so.9:gdev_pdf_fill_rectangle_hl_color
+libgs.so.9:gdev_pdf_fill_stroke_path
 libgs.so.9:gdev_pdf_fillpage
 libgs.so.9:gdev_pdf_get_param
 libgs.so.9:gdev_pdf_get_params
@@ -2307,6 +2314,7 @@ libgs.so.9:gs_enumerate_files_init
 libgs.so.9:gs_enumerate_files_next
 libgs.so.9:gs_eoclip
 libgs.so.9:gs_eofill
+libgs.so.9:gs_eofillstroke
 libgs.so.9:gs_erasepage
 libgs.so.9:gs_errorinfo_put_pair
 libgs.so.9:gs_errorinfo_put_pair_from_dict
@@ -2332,6 +2340,7 @@ libgs.so.9:gs_fapi_set_servers_client_data
 libgs.so.9:gs_file_name_check_separator
 libgs.so.9:gs_fill
 libgs.so.9:gs_fillpage
+libgs.so.9:gs_fillstroke
 libgs.so.9:gs_find_compositor
 libgs.so.9:gs_find_font_by_id
 libgs.so.9:gs_findiodevice
@@ -2886,7 +2895,6 @@ libgs.so.9:gs_strokepath2
 libgs.so.9:gs_strtok
 libgs.so.9:gs_struct_type_name
 libgs.so.9:gs_struct_type_size
-libgs.so.9:gs_swapcolors
 libgs.so.9:gs_swapcolors_quick
 libgs.so.9:gs_terminate_file_name
 libgs.so.9:gs_text_begin
@@ -3089,6 +3097,7 @@ libgs.so.9:gsicc_setcoloraccuracy
 libgs.so.9:gsicc_setrange_lab
 libgs.so.9:gsicc_support_named_color
 libgs.so.9:gsicc_transform_named_color
+libgs.so.9:gsicc_use_fast_color
 libgs.so.9:gstate_pattern_cache
 libgs.so.9:gstate_set_pattern_cache
 libgs.so.9:gx_abort_trans_device
@@ -3190,6 +3199,7 @@ libgs.so.9:gx_cpath_unshare
 libgs.so.9:gx_cspace_is_linear_default
 libgs.so.9:gx_cspace_no_linear
 libgs.so.9:gx_curr_bbox
+libgs.so.9:gx_curr_fixed_bbox
 libgs.so.9:gx_current_char
 libgs.so.9:gx_current_path
 libgs.so.9:gx_curve_log2_samples
@@ -3282,6 +3292,7 @@ libgs.so.9:gx_default_fill_mask
 libgs.so.9:gx_default_fill_parallelogram
 libgs.so.9:gx_default_fill_path
 libgs.so.9:gx_default_fill_rectangle_hl_color
+libgs.so.9:gx_default_fill_stroke_path
 libgs.so.9:gx_default_fill_trapezoid
 libgs.so.9:gx_default_fill_triangle
 libgs.so.9:gx_default_fillpage
@@ -3432,6 +3443,7 @@ libgs.so.9:gx_fill_edgebuffer_app
 libgs.so.9:gx_fill_edgebuffer_tr
 libgs.so.9:gx_fill_edgebuffer_tr_app
 libgs.so.9:gx_fill_path
+libgs.so.9:gx_fill_stroke_path
 libgs.so.9:gx_fill_trapezoid_cf_fd
 libgs.so.9:gx_fill_trapezoid_cf_nd
 libgs.so.9:gx_fill_triangle_small
@@ -3467,6 +3479,7 @@ libgs.so.9:gx_forward_fill_parallelogram
 libgs.so.9:gx_forward_fill_path
 libgs.so.9:gx_forward_fill_rectangle
 libgs.so.9:gx_forward_fill_rectangle_hl_color
+libgs.so.9:gx_forward_fill_stroke_path
 libgs.so.9:gx_forward_fill_trapezoid
 libgs.so.9:gx_forward_fill_triangle
 libgs.so.9:gx_forward_fillpage
@@ -3680,6 +3693,7 @@ libgs.so.9:gx_pattern_alloc_cache
 libgs.so.9:gx_pattern_cache_add_dummy_entry
 libgs.so.9:gx_pattern_cache_add_entry
 libgs.so.9:gx_pattern_cache_ensure_space
+libgs.so.9:gx_pattern_cache_entry_set_lock
 libgs.so.9:gx_pattern_cache_free
 libgs.so.9:gx_pattern_cache_get_entry
 libgs.so.9:gx_pattern_cache_lookup
@@ -3715,6 +3729,7 @@ libgs.so.9:gx_remap_DeviceCMYK
 libgs.so.9:gx_remap_DeviceGray
 libgs.so.9:gx_remap_DeviceRGB
 libgs.so.9:gx_remap_ICC_imagelab
+libgs.so.9:gx_remap_ICC_with_link
 libgs.so.9:gx_remap_color
 libgs.so.9:gx_remap_concrete_DCMYK
 libgs.so.9:gx_remap_concrete_DGray
@@ -3762,6 +3777,7 @@ libgs.so.9:gx_set_dot_length
 libgs.so.9:gx_set_effective_transfer
 libgs.so.9:gx_set_identity_transfer
 libgs.so.9:gx_set_miter_limit
+libgs.so.9:gx_set_no_overprint
 libgs.so.9:gx_set_overprint_cmyk
 libgs.so.9:gx_set_pattern_procs_standard
 libgs.so.9:gx_set_pattern_procs_trans
@@ -4750,6 +4766,7 @@ libgs.so.9:pdf_page_id
 libgs.so.9:pdf_pop_namespace
 libgs.so.9:pdf_prepare_drawing
 libgs.so.9:pdf_prepare_fill
+libgs.so.9:pdf_prepare_fill_stroke
 libgs.so.9:pdf_prepare_image
 libgs.so.9:pdf_prepare_imagemask
 libgs.so.9:pdf_prepare_initial_viewer_state
@@ -5265,9 +5282,6 @@ libgs.so.9:sfeof
 libgs.so.9:sferror
 libgs.so.9:sfgetc
 libgs.so.9:sfilename
-libgs.so.9:sfnt_done_face
-libgs.so.9:sfnt_init_face
-libgs.so.9:sfnt_load_face
 libgs.so.9:sfopen
 libgs.so.9:sfread
 libgs.so.9:sfseek
@@ -5405,27 +5419,25 @@ libgs.so.9:tt_apply_mvar
 libgs.so.9:tt_done_blend
 libgs.so.9:tt_driver_done
 libgs.so.9:tt_driver_init
-libgs.so.9:tt_face_build_cmaps
 libgs.so.9:tt_face_done
 libgs.so.9:tt_face_done_kern
 libgs.so.9:tt_face_done_loca
 libgs.so.9:tt_face_find_bdf_prop
 libgs.so.9:tt_face_free_bdf_props
+libgs.so.9:tt_face_free_cpal
 libgs.so.9:tt_face_free_hdmx
 libgs.so.9:tt_face_free_name
 libgs.so.9:tt_face_free_ps_names
-libgs.so.9:tt_face_free_sbit
 libgs.so.9:tt_face_get_device_metrics
 libgs.so.9:tt_face_get_kerning
 libgs.so.9:tt_face_get_location
 libgs.so.9:tt_face_get_metrics
-libgs.so.9:tt_face_get_name
 libgs.so.9:tt_face_get_ps_name
 libgs.so.9:tt_face_goto_table
 libgs.so.9:tt_face_init
 libgs.so.9:tt_face_load_any
-libgs.so.9:tt_face_load_bhed
 libgs.so.9:tt_face_load_cmap
+libgs.so.9:tt_face_load_cpal
 libgs.so.9:tt_face_load_cvt
 libgs.so.9:tt_face_load_font_dir
 libgs.so.9:tt_face_load_fpgm
@@ -5442,13 +5454,9 @@ libgs.so.9:tt_face_load_os2
 libgs.so.9:tt_face_load_pclt
 libgs.so.9:tt_face_load_post
 libgs.so.9:tt_face_load_prep
-libgs.so.9:tt_face_load_sbit
-libgs.so.9:tt_face_load_sbit_image
-libgs.so.9:tt_face_load_strike_metrics
 libgs.so.9:tt_face_lookup_table
-libgs.so.9:tt_face_set_sbit_strike
+libgs.so.9:tt_face_palette_set
 libgs.so.9:tt_face_vary_cvt
-libgs.so.9:tt_get_cmap_info
 libgs.so.9:tt_get_var_blend
 libgs.so.9:tt_glyphzone_done
 libgs.so.9:tt_glyphzone_new
