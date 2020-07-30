@@ -4,7 +4,7 @@
 #
 Name     : ghostscript
 Version  : 9.52
-Release  : 21
+Release  : 22
 URL      : https://github.com/ArtifexSoftware/ghostpdl-downloads/releases/download/gs952/ghostscript-9.52.tar.xz
 Source0  : https://github.com/ArtifexSoftware/ghostpdl-downloads/releases/download/gs952/ghostscript-9.52.tar.xz
 Summary  : Loads and saves PNG files
@@ -44,6 +44,7 @@ BuildRequires : tiff-dev
 BuildRequires : zlib-dev
 Patch1: CVE-2018-11813.patch
 Patch2: build-Add-configure-option-to-use-system-libpng.patch
+Patch3: CVE-2020-15900.patch
 
 %description
 =================================================
@@ -121,13 +122,14 @@ man components for the ghostscript package.
 cd %{_builddir}/ghostscript-9.52
 %patch1 -p1
 %patch2 -p1
+%patch3 -p1
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1594424952
+export SOURCE_DATE_EPOCH=1596070219
 export GCC_IGNORE_WERROR=1
 export CFLAGS="$CFLAGS -fno-lto -fstack-protector-strong -mzero-caller-saved-regs=used "
 export FCFLAGS="$FFLAGS -fno-lto -fstack-protector-strong -mzero-caller-saved-regs=used "
@@ -137,7 +139,7 @@ export CXXFLAGS="$CXXFLAGS -fno-lto -fstack-protector-strong -mzero-caller-saved
 make  %{?_smp_mflags}  all so
 
 %install
-export SOURCE_DATE_EPOCH=1594424952
+export SOURCE_DATE_EPOCH=1596070219
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/ghostscript
 cp %{_builddir}/ghostscript-9.52/LICENSE %{buildroot}/usr/share/package-licenses/ghostscript/e84a42ff92058462c731335c806dd2a761134b20
