@@ -7,12 +7,17 @@ Configure miss: sys/ndir.h
 Configure miss: sys/window.h usability
 Configure miss: sys/window.h presence
 Configure miss: sys/window.h
+Configure miss: local Tesseract library source
 Configure miss: libidn with pkg-config
 Configure miss: stringprep in -lidn
 Configure miss: systempapername in -lpaper
+Configure miss: local jpeg library source
+Configure miss: jmemsys.h
+Configure miss: local png library source
 Configure miss: x86_64-generic-linux-gnu-cups-config
 Configure miss: local Luratech JBIG2 library source
 Configure miss: local Luratech JPEG2K library source
+Configure miss: local OpenJPEG library source
 Configure miss: URF support... checking for local CAL library source
 Configure miss: GTK+ 3.x
 Configure miss: GTK+ 2.x

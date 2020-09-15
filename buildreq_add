@@ -12,6 +12,7 @@ libjpeg-turbo-dev
 mesa-dev
 pkgconfig(fontconfig)
 pkgconfig(ice)
+pkgconfig(libopenjp2)
 pkgconfig(x11)
 pkgconfig(xt)
 pkgconfig(zlib)

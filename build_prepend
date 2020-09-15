@@ -1,0 +1,7 @@
+# if this file is missing, configure will fall back to check for system-installed libpng
+rm -f libpng/pngread.c
+# if these files are missing, configure will fall back to check for system-installed libjpeg
+rm -f jpeg/jpeglib.h
+rm -f jpeg-6b/jpeglib.h
+# if this file is missing, configure will fall back to check for system-installed openjpeg
+rm -f openjpeg/src/lib/openjp2/openjpeg.h
