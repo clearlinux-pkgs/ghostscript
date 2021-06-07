@@ -1,2 +1,8 @@
 # This file contains additional pkgconfig build requirements that did
 # not get picked up automatically. One name per line, no whitespace.
+fontconfig
+ice
+libopenjp2
+x11
+xt
+zlib

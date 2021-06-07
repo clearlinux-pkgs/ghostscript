@@ -2,6 +2,7 @@ libX11.so.6
 libXt.so.6
 libc.so.6
 libcups.so.2
+libdl.so.2
 libfontconfig.so.1
 libjpeg.so.62
 libm.so.6
