@@ -4,7 +4,7 @@
 #
 Name     : ghostscript
 Version  : 9.54.0
-Release  : 27
+Release  : 28
 URL      : https://github.com/ArtifexSoftware/ghostpdl-downloads/releases/download/gs9540/ghostscript-9.54.0.tar.xz
 Source0  : https://github.com/ArtifexSoftware/ghostpdl-downloads/releases/download/gs9540/ghostscript-9.54.0.tar.xz
 Summary  : Loads and saves PNG files
@@ -12,6 +12,7 @@ Group    : Development/Tools
 License  : AGPL-3.0 Apache-2.0 BSD-2-Clause BSL-1.0 FTL GPL-2.0 GPL-3.0 IJG Libpng MIT libtiff
 Requires: ghostscript-bin = %{version}-%{release}
 Requires: ghostscript-data = %{version}-%{release}
+Requires: ghostscript-filemap = %{version}-%{release}
 Requires: ghostscript-lib = %{version}-%{release}
 Requires: ghostscript-license = %{version}-%{release}
 Requires: ghostscript-man = %{version}-%{release}
@@ -60,6 +61,7 @@ Summary: bin components for the ghostscript package.
 Group: Binaries
 Requires: ghostscript-data = %{version}-%{release}
 Requires: ghostscript-license = %{version}-%{release}
+Requires: ghostscript-filemap = %{version}-%{release}
 
 %description bin
 bin components for the ghostscript package.
@@ -95,11 +97,20 @@ Requires: ghostscript-man = %{version}-%{release}
 doc components for the ghostscript package.
 
 
+%package filemap
+Summary: filemap components for the ghostscript package.
+Group: Default
+
+%description filemap
+filemap components for the ghostscript package.
+
+
 %package lib
 Summary: lib components for the ghostscript package.
 Group: Libraries
 Requires: ghostscript-data = %{version}-%{release}
 Requires: ghostscript-license = %{version}-%{release}
+Requires: ghostscript-filemap = %{version}-%{release}
 
 %description lib
 lib components for the ghostscript package.
@@ -125,6 +136,9 @@ man components for the ghostscript package.
 %setup -q -n ghostscript-9.54.0
 cd %{_builddir}/ghostscript-9.54.0
 %patch1 -p1
+pushd ..
+cp -a ghostscript-9.54.0 buildavx2
+popd
 
 %build
 ## build_prepend content
@@ -140,7 +154,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1623098627
+export SOURCE_DATE_EPOCH=1634259504
 export GCC_IGNORE_WERROR=1
 export CFLAGS="$CFLAGS -fno-lto -fstack-protector-strong -fzero-call-used-regs=used "
 export FCFLAGS="$FFLAGS -fno-lto -fstack-protector-strong -fzero-call-used-regs=used "
@@ -150,8 +164,28 @@ export CXXFLAGS="$CXXFLAGS -fno-lto -fstack-protector-strong -fzero-call-used-re
 --without-tesseract
 make  %{?_smp_mflags}  all so
 
+unset PKG_CONFIG_PATH
+pushd ../buildavx2/
+## build_prepend content
+# if this file is missing, configure will fall back to check for system-installed libpng
+rm -f libpng/pngread.c
+# if these files are missing, configure will fall back to check for system-installed libjpeg
+rm -f jpeg/jpeglib.h
+rm -f jpeg-6b/jpeglib.h
+# if this file is missing, configure will fall back to check for system-installed openjpeg
+rm -f openjpeg/src/lib/openjp2/openjpeg.h
+## build_prepend end
+export CFLAGS="$CFLAGS -m64 -march=x86-64-v3"
+export CXXFLAGS="$CXXFLAGS -m64 -march=x86-64-v3"
+export FFLAGS="$FFLAGS -m64 -march=x86-64-v3"
+export FCFLAGS="$FCFLAGS -m64 -march=x86-64-v3"
+export LDFLAGS="$LDFLAGS -m64 -march=x86-64-v3"
+%configure --disable-static --with-system-libtiff \
+--without-tesseract
+make  %{?_smp_mflags}  all so
+popd
 %install
-export SOURCE_DATE_EPOCH=1623098627
+export SOURCE_DATE_EPOCH=1634259504
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/ghostscript
 cp %{_builddir}/ghostscript-9.54.0/LICENSE %{buildroot}/usr/share/package-licenses/ghostscript/e84a42ff92058462c731335c806dd2a761134b20
@@ -178,7 +212,11 @@ cp %{_builddir}/ghostscript-9.54.0/openjpeg/LICENSE %{buildroot}/usr/share/packa
 cp %{_builddir}/ghostscript-9.54.0/tesseract/LICENSE %{buildroot}/usr/share/package-licenses/ghostscript/2b8b815229aa8a61e483fb4ba0588b8b6c491890
 cp %{_builddir}/ghostscript-9.54.0/tiff/COPYRIGHT %{buildroot}/usr/share/package-licenses/ghostscript/a2f64f2a85f5fd34bda8eb713c3aad008adbb589
 cp %{_builddir}/ghostscript-9.54.0/zlib/contrib/dotzlib/LICENSE_1_0.txt %{buildroot}/usr/share/package-licenses/ghostscript/3f317fbb3e08fd99169d2e77105d562ea0e482c7
+pushd ../buildavx2/
+%make_install_v3 install-so
+popd
 %make_install install-so
+/usr/bin/elf-move.py avx2 %{buildroot}-v3 %{buildroot}/usr/share/clear/optimized-elf/ %{buildroot}/usr/share/clear/filemap/filemap-%{name}
 
 %files
 %defattr(-,root,root,-)
@@ -213,6 +251,7 @@ cp %{_builddir}/ghostscript-9.54.0/zlib/contrib/dotzlib/LICENSE_1_0.txt %{buildr
 /usr/bin/ps2ps
 /usr/bin/ps2ps2
 /usr/bin/unix-lpr.sh
+/usr/share/clear/optimized-elf/bin*
 
 %files data
 %defattr(-,root,root,-)
@@ -385,10 +424,15 @@ cp %{_builddir}/ghostscript-9.54.0/zlib/contrib/dotzlib/LICENSE_1_0.txt %{buildr
 %defattr(0644,root,root,0755)
 %doc /usr/share/doc/ghostscript/*
 
+%files filemap
+%defattr(-,root,root,-)
+/usr/share/clear/filemap/filemap-ghostscript
+
 %files lib
 %defattr(-,root,root,-)
 /usr/lib64/libgs.so.9
 /usr/lib64/libgs.so.9.54
+/usr/share/clear/optimized-elf/lib*
 
 %files license
 %defattr(0644,root,root,0755)
