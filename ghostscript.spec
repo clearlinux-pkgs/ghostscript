@@ -4,7 +4,7 @@
 #
 Name     : ghostscript
 Version  : 9.54.0
-Release  : 32
+Release  : 33
 URL      : https://github.com/ArtifexSoftware/ghostpdl-downloads/releases/download/gs9540/ghostscript-9.54.0.tar.xz
 Source0  : https://github.com/ArtifexSoftware/ghostpdl-downloads/releases/download/gs9540/ghostscript-9.54.0.tar.xz
 Summary  : Loads and saves PNG files
@@ -154,7 +154,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1656030580
+export SOURCE_DATE_EPOCH=1656112723
 export GCC_IGNORE_WERROR=1
 export CFLAGS="$CFLAGS -fno-lto -fstack-protector-strong -fzero-call-used-regs=used "
 export FCFLAGS="$FFLAGS -fno-lto -fstack-protector-strong -fzero-call-used-regs=used "
@@ -185,7 +185,7 @@ export LDFLAGS="$LDFLAGS -m64 -march=x86-64-v3"
 make  %{?_smp_mflags}  all so
 popd
 %install
-export SOURCE_DATE_EPOCH=1656030580
+export SOURCE_DATE_EPOCH=1656112723
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/ghostscript
 cp %{_builddir}/ghostscript-9.54.0/LICENSE %{buildroot}/usr/share/package-licenses/ghostscript/e84a42ff92058462c731335c806dd2a761134b20
