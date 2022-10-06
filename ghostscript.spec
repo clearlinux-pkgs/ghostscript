@@ -4,7 +4,7 @@
 #
 Name     : ghostscript
 Version  : 9.54.0
-Release  : 37
+Release  : 38
 URL      : https://github.com/ArtifexSoftware/ghostpdl-downloads/releases/download/gs9540/ghostscript-9.54.0.tar.xz
 Source0  : https://github.com/ArtifexSoftware/ghostpdl-downloads/releases/download/gs9540/ghostscript-9.54.0.tar.xz
 Summary  : Loads and saves PNG files
@@ -154,7 +154,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1656112723
+export SOURCE_DATE_EPOCH=1665100004
 export GCC_IGNORE_WERROR=1
 export CFLAGS="$CFLAGS -fno-lto -fstack-protector-strong -fzero-call-used-regs=used "
 export FCFLAGS="$FFLAGS -fno-lto -fstack-protector-strong -fzero-call-used-regs=used "
@@ -185,33 +185,33 @@ export LDFLAGS="$LDFLAGS -m64 -march=x86-64-v3"
 make  %{?_smp_mflags}  all so
 popd
 %install
-export SOURCE_DATE_EPOCH=1656112723
+export SOURCE_DATE_EPOCH=1665100004
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/ghostscript
-cp %{_builddir}/ghostscript-9.54.0/LICENSE %{buildroot}/usr/share/package-licenses/ghostscript/e84a42ff92058462c731335c806dd2a761134b20
-cp %{_builddir}/ghostscript-9.54.0/contrib/chp2200/COPYING %{buildroot}/usr/share/package-licenses/ghostscript/dfac199a7539a404407098a2541b9482279f690d
-cp %{_builddir}/ghostscript-9.54.0/contrib/lxm3200-tweaked/LICENSE %{buildroot}/usr/share/package-licenses/ghostscript/3bfe807735331dd9d4ce59bc8efe86e2e7fe7b75
-cp %{_builddir}/ghostscript-9.54.0/cups/LICENSE.txt %{buildroot}/usr/share/package-licenses/ghostscript/4f9df3f6d8b289409ab4ef55e9ca885d8ae1decd
-cp %{_builddir}/ghostscript-9.54.0/doc/COPYING %{buildroot}/usr/share/package-licenses/ghostscript/78e50e186b04c8fe1defaa098f1c192181b3d837
-cp %{_builddir}/ghostscript-9.54.0/extract/COPYING %{buildroot}/usr/share/package-licenses/ghostscript/78e50e186b04c8fe1defaa098f1c192181b3d837
-cp %{_builddir}/ghostscript-9.54.0/freetype/docs/GPLv2.TXT %{buildroot}/usr/share/package-licenses/ghostscript/dac7127c82749e3107b53530289e1cd548860868
-cp %{_builddir}/ghostscript-9.54.0/freetype/docs/LICENSE.TXT %{buildroot}/usr/share/package-licenses/ghostscript/64b7f213ddd72695d94866a1a9532ee5b3a472a8
-cp %{_builddir}/ghostscript-9.54.0/jbig2dec/COPYING %{buildroot}/usr/share/package-licenses/ghostscript/78e50e186b04c8fe1defaa098f1c192181b3d837
-cp %{_builddir}/ghostscript-9.54.0/jbig2dec/LICENSE %{buildroot}/usr/share/package-licenses/ghostscript/21c1d4cf3616efc56f2a970d63e9c626a2283ba6
-cp %{_builddir}/ghostscript-9.54.0/lcms2mt/COPYING %{buildroot}/usr/share/package-licenses/ghostscript/704c75535f661058e8e776ce8112e78db11fdce1
-cp %{_builddir}/ghostscript-9.54.0/lcms2mt/plugins/fast_float/COPYING.GPL3 %{buildroot}/usr/share/package-licenses/ghostscript/1de7bacb4fbbd7b6d391a69abfe174c2509ec303
-cp %{_builddir}/ghostscript-9.54.0/lcms2mt/utils/jpgicc/LICENSE_iccjpeg %{buildroot}/usr/share/package-licenses/ghostscript/46e7b80883a260d5531d06126e6bea86daccac9b
-cp %{_builddir}/ghostscript-9.54.0/leptonica/leptonica-license.txt %{buildroot}/usr/share/package-licenses/ghostscript/e0b1dceebde3eb567f610aa97227aa6a5e713810
-cp %{_builddir}/ghostscript-9.54.0/leptonica/prog/leptonica-license.txt %{buildroot}/usr/share/package-licenses/ghostscript/e0b1dceebde3eb567f610aa97227aa6a5e713810
-cp %{_builddir}/ghostscript-9.54.0/leptonica/src/leptonica-license.txt %{buildroot}/usr/share/package-licenses/ghostscript/e0b1dceebde3eb567f610aa97227aa6a5e713810
-cp %{_builddir}/ghostscript-9.54.0/libpng/LICENSE %{buildroot}/usr/share/package-licenses/ghostscript/fc3951ba26fe1914759f605696a1d23e3b41766f
-cp %{_builddir}/ghostscript-9.54.0/libpng/contrib/gregbook/COPYING %{buildroot}/usr/share/package-licenses/ghostscript/80b6f4fcbc19d7431482cba012e86f587828c1ba
-cp %{_builddir}/ghostscript-9.54.0/libpng/contrib/gregbook/LICENSE %{buildroot}/usr/share/package-licenses/ghostscript/aa4b9207aaff26bc16c562d6cd766a9eed49af1e
-cp %{_builddir}/ghostscript-9.54.0/libpng/contrib/pngminus/LICENSE.txt %{buildroot}/usr/share/package-licenses/ghostscript/29883b5b9150592328072643614229f6d320bc6e
-cp %{_builddir}/ghostscript-9.54.0/openjpeg/LICENSE %{buildroot}/usr/share/package-licenses/ghostscript/a1a529b822da257f69972ea711df38489e9d4251
-cp %{_builddir}/ghostscript-9.54.0/tesseract/LICENSE %{buildroot}/usr/share/package-licenses/ghostscript/2b8b815229aa8a61e483fb4ba0588b8b6c491890
-cp %{_builddir}/ghostscript-9.54.0/tiff/COPYRIGHT %{buildroot}/usr/share/package-licenses/ghostscript/a2f64f2a85f5fd34bda8eb713c3aad008adbb589
-cp %{_builddir}/ghostscript-9.54.0/zlib/contrib/dotzlib/LICENSE_1_0.txt %{buildroot}/usr/share/package-licenses/ghostscript/3f317fbb3e08fd99169d2e77105d562ea0e482c7
+cp %{_builddir}/ghostscript-%{version}/LICENSE %{buildroot}/usr/share/package-licenses/ghostscript/e84a42ff92058462c731335c806dd2a761134b20
+cp %{_builddir}/ghostscript-%{version}/contrib/chp2200/COPYING %{buildroot}/usr/share/package-licenses/ghostscript/dfac199a7539a404407098a2541b9482279f690d
+cp %{_builddir}/ghostscript-%{version}/contrib/lxm3200-tweaked/LICENSE %{buildroot}/usr/share/package-licenses/ghostscript/3bfe807735331dd9d4ce59bc8efe86e2e7fe7b75
+cp %{_builddir}/ghostscript-%{version}/cups/LICENSE.txt %{buildroot}/usr/share/package-licenses/ghostscript/4f9df3f6d8b289409ab4ef55e9ca885d8ae1decd
+cp %{_builddir}/ghostscript-%{version}/doc/COPYING %{buildroot}/usr/share/package-licenses/ghostscript/78e50e186b04c8fe1defaa098f1c192181b3d837
+cp %{_builddir}/ghostscript-%{version}/extract/COPYING %{buildroot}/usr/share/package-licenses/ghostscript/78e50e186b04c8fe1defaa098f1c192181b3d837
+cp %{_builddir}/ghostscript-%{version}/freetype/docs/GPLv2.TXT %{buildroot}/usr/share/package-licenses/ghostscript/dac7127c82749e3107b53530289e1cd548860868
+cp %{_builddir}/ghostscript-%{version}/freetype/docs/LICENSE.TXT %{buildroot}/usr/share/package-licenses/ghostscript/64b7f213ddd72695d94866a1a9532ee5b3a472a8
+cp %{_builddir}/ghostscript-%{version}/jbig2dec/COPYING %{buildroot}/usr/share/package-licenses/ghostscript/78e50e186b04c8fe1defaa098f1c192181b3d837
+cp %{_builddir}/ghostscript-%{version}/jbig2dec/LICENSE %{buildroot}/usr/share/package-licenses/ghostscript/21c1d4cf3616efc56f2a970d63e9c626a2283ba6
+cp %{_builddir}/ghostscript-%{version}/lcms2mt/COPYING %{buildroot}/usr/share/package-licenses/ghostscript/704c75535f661058e8e776ce8112e78db11fdce1
+cp %{_builddir}/ghostscript-%{version}/lcms2mt/plugins/fast_float/COPYING.GPL3 %{buildroot}/usr/share/package-licenses/ghostscript/1de7bacb4fbbd7b6d391a69abfe174c2509ec303
+cp %{_builddir}/ghostscript-%{version}/lcms2mt/utils/jpgicc/LICENSE_iccjpeg %{buildroot}/usr/share/package-licenses/ghostscript/46e7b80883a260d5531d06126e6bea86daccac9b
+cp %{_builddir}/ghostscript-%{version}/leptonica/leptonica-license.txt %{buildroot}/usr/share/package-licenses/ghostscript/e0b1dceebde3eb567f610aa97227aa6a5e713810
+cp %{_builddir}/ghostscript-%{version}/leptonica/prog/leptonica-license.txt %{buildroot}/usr/share/package-licenses/ghostscript/e0b1dceebde3eb567f610aa97227aa6a5e713810
+cp %{_builddir}/ghostscript-%{version}/leptonica/src/leptonica-license.txt %{buildroot}/usr/share/package-licenses/ghostscript/e0b1dceebde3eb567f610aa97227aa6a5e713810
+cp %{_builddir}/ghostscript-%{version}/libpng/LICENSE %{buildroot}/usr/share/package-licenses/ghostscript/fc3951ba26fe1914759f605696a1d23e3b41766f
+cp %{_builddir}/ghostscript-%{version}/libpng/contrib/gregbook/COPYING %{buildroot}/usr/share/package-licenses/ghostscript/80b6f4fcbc19d7431482cba012e86f587828c1ba
+cp %{_builddir}/ghostscript-%{version}/libpng/contrib/gregbook/LICENSE %{buildroot}/usr/share/package-licenses/ghostscript/aa4b9207aaff26bc16c562d6cd766a9eed49af1e
+cp %{_builddir}/ghostscript-%{version}/libpng/contrib/pngminus/LICENSE.txt %{buildroot}/usr/share/package-licenses/ghostscript/29883b5b9150592328072643614229f6d320bc6e
+cp %{_builddir}/ghostscript-%{version}/openjpeg/LICENSE %{buildroot}/usr/share/package-licenses/ghostscript/a1a529b822da257f69972ea711df38489e9d4251
+cp %{_builddir}/ghostscript-%{version}/tesseract/LICENSE %{buildroot}/usr/share/package-licenses/ghostscript/2b8b815229aa8a61e483fb4ba0588b8b6c491890
+cp %{_builddir}/ghostscript-%{version}/tiff/COPYRIGHT %{buildroot}/usr/share/package-licenses/ghostscript/a2f64f2a85f5fd34bda8eb713c3aad008adbb589
+cp %{_builddir}/ghostscript-%{version}/zlib/contrib/dotzlib/LICENSE_1_0.txt %{buildroot}/usr/share/package-licenses/ghostscript/3f317fbb3e08fd99169d2e77105d562ea0e482c7
 pushd ../buildavx2/
 %make_install_v3 install-so
 popd
@@ -418,6 +418,7 @@ popd
 /usr/include/ghostscript/gserrors.h
 /usr/include/ghostscript/iapi.h
 /usr/include/ghostscript/ierrors.h
+/usr/lib64/glibc-hwcaps/x86-64-v3/libgs.so
 /usr/lib64/libgs.so
 
 %files doc
@@ -430,7 +431,6 @@ popd
 
 %files lib
 %defattr(-,root,root,-)
-/usr/lib64/glibc-hwcaps/x86-64-v3/libgs.so
 /usr/lib64/glibc-hwcaps/x86-64-v3/libgs.so.9
 /usr/lib64/glibc-hwcaps/x86-64-v3/libgs.so.9.54
 /usr/lib64/libgs.so.9
