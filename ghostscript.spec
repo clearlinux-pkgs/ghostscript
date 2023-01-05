@@ -4,7 +4,7 @@
 #
 Name     : ghostscript
 Version  : 9.54.0
-Release  : 38
+Release  : 39
 URL      : https://github.com/ArtifexSoftware/ghostpdl-downloads/releases/download/gs9540/ghostscript-9.54.0.tar.xz
 Source0  : https://github.com/ArtifexSoftware/ghostpdl-downloads/releases/download/gs9540/ghostscript-9.54.0.tar.xz
 Summary  : Loads and saves PNG files
