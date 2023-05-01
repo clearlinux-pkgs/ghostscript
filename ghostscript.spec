@@ -5,7 +5,7 @@
 #
 Name     : ghostscript
 Version  : 10.01.1
-Release  : 41
+Release  : 42
 URL      : https://github.com/ArtifexSoftware/ghostpdl-downloads/releases/download/gs10011/ghostscript-10.01.1.tar.xz
 Source0  : https://github.com/ArtifexSoftware/ghostpdl-downloads/releases/download/gs10011/ghostscript-10.01.1.tar.xz
 Summary  : IJS (InkJet Server) Raster Image Transport Protocol
@@ -13,7 +13,6 @@ Group    : Development/Tools
 License  : AGPL-3.0 Apache-2.0 BSD-2-Clause BSL-1.0 GPL-2.0 GPL-3.0 IJG Libpng MIT libtiff
 Requires: ghostscript-bin = %{version}-%{release}
 Requires: ghostscript-data = %{version}-%{release}
-Requires: ghostscript-filemap = %{version}-%{release}
 Requires: ghostscript-lib = %{version}-%{release}
 Requires: ghostscript-license = %{version}-%{release}
 Requires: ghostscript-man = %{version}-%{release}
@@ -67,7 +66,6 @@ Summary: bin components for the ghostscript package.
 Group: Binaries
 Requires: ghostscript-data = %{version}-%{release}
 Requires: ghostscript-license = %{version}-%{release}
-Requires: ghostscript-filemap = %{version}-%{release}
 
 %description bin
 bin components for the ghostscript package.
@@ -103,20 +101,11 @@ Requires: ghostscript-man = %{version}-%{release}
 doc components for the ghostscript package.
 
 
-%package filemap
-Summary: filemap components for the ghostscript package.
-Group: Default
-
-%description filemap
-filemap components for the ghostscript package.
-
-
 %package lib
 Summary: lib components for the ghostscript package.
 Group: Libraries
 Requires: ghostscript-data = %{version}-%{release}
 Requires: ghostscript-license = %{version}-%{release}
-Requires: ghostscript-filemap = %{version}-%{release}
 
 %description lib
 lib components for the ghostscript package.
@@ -159,12 +148,12 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1680114415
+export SOURCE_DATE_EPOCH=1682966205
 export GCC_IGNORE_WERROR=1
-export CFLAGS="$CFLAGS -fdebug-types-section -femit-struct-debug-baseonly -fno-lto -fstack-protector-strong -fzero-call-used-regs=used -g1 -gno-column-info -gno-variable-location-views -gz "
-export FCFLAGS="$FFLAGS -fdebug-types-section -femit-struct-debug-baseonly -fno-lto -fstack-protector-strong -fzero-call-used-regs=used -g1 -gno-column-info -gno-variable-location-views -gz "
-export FFLAGS="$FFLAGS -fdebug-types-section -femit-struct-debug-baseonly -fno-lto -fstack-protector-strong -fzero-call-used-regs=used -g1 -gno-column-info -gno-variable-location-views -gz "
-export CXXFLAGS="$CXXFLAGS -fdebug-types-section -femit-struct-debug-baseonly -fno-lto -fstack-protector-strong -fzero-call-used-regs=used -g1 -gno-column-info -gno-variable-location-views -gz "
+export CFLAGS="$CFLAGS -fdebug-types-section -femit-struct-debug-baseonly -fno-lto -fstack-protector-strong -fzero-call-used-regs=used -g1 -gno-column-info -gno-variable-location-views -gz=zstd "
+export FCFLAGS="$FFLAGS -fdebug-types-section -femit-struct-debug-baseonly -fno-lto -fstack-protector-strong -fzero-call-used-regs=used -g1 -gno-column-info -gno-variable-location-views -gz=zstd "
+export FFLAGS="$FFLAGS -fdebug-types-section -femit-struct-debug-baseonly -fno-lto -fstack-protector-strong -fzero-call-used-regs=used -g1 -gno-column-info -gno-variable-location-views -gz=zstd "
+export CXXFLAGS="$CXXFLAGS -fdebug-types-section -femit-struct-debug-baseonly -fno-lto -fstack-protector-strong -fzero-call-used-regs=used -g1 -gno-column-info -gno-variable-location-views -gz=zstd "
 %configure --disable-static --with-system-libtiff \
 --without-tesseract
 make  %{?_smp_mflags}  all so
@@ -190,7 +179,7 @@ export LDFLAGS="$LDFLAGS -m64 -march=x86-64-v3"
 make  %{?_smp_mflags}  all so
 popd
 %install
-export SOURCE_DATE_EPOCH=1680114415
+export SOURCE_DATE_EPOCH=1682966205
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/ghostscript
 cp %{_builddir}/ghostscript-%{version}/contrib/chp2200/COPYING %{buildroot}/usr/share/package-licenses/ghostscript/dfac199a7539a404407098a2541b9482279f690d || :
@@ -226,6 +215,9 @@ popd
 
 %files bin
 %defattr(-,root,root,-)
+/V3/usr/bin/gs
+/V3/usr/bin/gsc
+/V3/usr/bin/gsx
 /usr/bin/dvipdf
 /usr/bin/eps2eps
 /usr/bin/gs
@@ -254,7 +246,6 @@ popd
 /usr/bin/ps2ps
 /usr/bin/ps2ps2
 /usr/bin/unix-lpr.sh
-/usr/share/clear/optimized-elf/bin*
 
 %files data
 %defattr(-,root,root,-)
@@ -417,25 +408,21 @@ popd
 
 %files dev
 %defattr(-,root,root,-)
+/V3/usr/lib64/libgs.so
 /usr/include/ghostscript/gdevdsp.h
 /usr/include/ghostscript/gserrors.h
 /usr/include/ghostscript/iapi.h
 /usr/include/ghostscript/ierrors.h
-/usr/lib64/glibc-hwcaps/x86-64-v3/libgs.so
 /usr/lib64/libgs.so
 
 %files doc
 %defattr(0644,root,root,0755)
-%doc /usr/share/doc/ghostscript/*
-
-%files filemap
-%defattr(-,root,root,-)
-/usr/share/clear/filemap/filemap-ghostscript
+/usr/share/doc/ghostscript/*
 
 %files lib
 %defattr(-,root,root,-)
-/usr/lib64/glibc-hwcaps/x86-64-v3/libgs.so.10
-/usr/lib64/glibc-hwcaps/x86-64-v3/libgs.so.10.01
+/V3/usr/lib64/libgs.so.10
+/V3/usr/lib64/libgs.so.10.01
 /usr/lib64/libgs.so.10
 /usr/lib64/libgs.so.10.01
 
