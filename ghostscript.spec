@@ -5,7 +5,7 @@
 #
 Name     : ghostscript
 Version  : 10.01.1
-Release  : 42
+Release  : 43
 URL      : https://github.com/ArtifexSoftware/ghostpdl-downloads/releases/download/gs10011/ghostscript-10.01.1.tar.xz
 Source0  : https://github.com/ArtifexSoftware/ghostpdl-downloads/releases/download/gs10011/ghostscript-10.01.1.tar.xz
 Summary  : IJS (InkJet Server) Raster Image Transport Protocol
@@ -148,7 +148,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1682966205
+export SOURCE_DATE_EPOCH=1685508618
 export GCC_IGNORE_WERROR=1
 export CFLAGS="$CFLAGS -fdebug-types-section -femit-struct-debug-baseonly -fno-lto -fstack-protector-strong -fzero-call-used-regs=used -g1 -gno-column-info -gno-variable-location-views -gz=zstd "
 export FCFLAGS="$FFLAGS -fdebug-types-section -femit-struct-debug-baseonly -fno-lto -fstack-protector-strong -fzero-call-used-regs=used -g1 -gno-column-info -gno-variable-location-views -gz=zstd "
@@ -179,7 +179,7 @@ export LDFLAGS="$LDFLAGS -m64 -march=x86-64-v3"
 make  %{?_smp_mflags}  all so
 popd
 %install
-export SOURCE_DATE_EPOCH=1682966205
+export SOURCE_DATE_EPOCH=1685508618
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/ghostscript
 cp %{_builddir}/ghostscript-%{version}/contrib/chp2200/COPYING %{buildroot}/usr/share/package-licenses/ghostscript/dfac199a7539a404407098a2541b9482279f690d || :
@@ -408,7 +408,6 @@ popd
 
 %files dev
 %defattr(-,root,root,-)
-/V3/usr/lib64/libgs.so
 /usr/include/ghostscript/gdevdsp.h
 /usr/include/ghostscript/gserrors.h
 /usr/include/ghostscript/iapi.h
@@ -421,7 +420,6 @@ popd
 
 %files lib
 %defattr(-,root,root,-)
-/V3/usr/lib64/libgs.so.10
 /V3/usr/lib64/libgs.so.10.01
 /usr/lib64/libgs.so.10
 /usr/lib64/libgs.so.10.01
