@@ -20,6 +20,8 @@ Configure miss: local png library source
 Configure miss: local png library source
 Configure miss: ndir.h
 Configure miss: ndir.h
+Configure miss: neon support
+Configure miss: neon support
 Configure miss: stringprep in -lidn
 Configure miss: stringprep in -lidn
 Configure miss: sys/ndir.h
