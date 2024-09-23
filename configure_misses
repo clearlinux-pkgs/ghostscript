@@ -2,8 +2,8 @@ Configure miss: GTK+ 2.x
 Configure miss: GTK+ 2.x
 Configure miss: GTK+ 3.x
 Configure miss: GTK+ 3.x
-Configure miss: URF support... checking for SmartOffice support... checking for local CAL library source
-Configure miss: URF support... checking for SmartOffice support... checking for local CAL library source
+Configure miss: SmartOffice support
+Configure miss: SmartOffice support
 Configure miss: fpclassify
 Configure miss: fpclassify
 Configure miss: gcc options needed to detect all undeclared functions
@@ -12,6 +12,8 @@ Configure miss: jmemsys.h
 Configure miss: jmemsys.h
 Configure miss: libidn with pkg-config
 Configure miss: libidn with pkg-config
+Configure miss: local CAL library source
+Configure miss: local CAL library source
 Configure miss: local OpenJPEG library source
 Configure miss: local OpenJPEG library source
 Configure miss: local jpeg library source
